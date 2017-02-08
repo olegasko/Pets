@@ -84,7 +84,7 @@ public class CatalogActivity extends AppCompatActivity
                 return true;
             // Respond to a click on the "Delete all entries" menu option
             case R.id.action_delete_all_entries:
-                // Do nothing for now
+                deleteData();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -101,10 +101,14 @@ public class CatalogActivity extends AppCompatActivity
         Log.v(CatalogActivity.class.getSimpleName(), "New row Id: " + ContentUris.parseId(uri));
     }
 
+    private void deleteData() {
+        int rowNum = getContentResolver().delete(PetEntry.CONTENT_URI, null, null);
+    }
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-                String[] projection = {
+        String[] projection = {
                 PetEntry._ID,
                 PetEntry.COLUMN_PET_NAME,
                 PetEntry.COLUMN_PET_BREED,

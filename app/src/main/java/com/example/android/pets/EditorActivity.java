@@ -401,5 +401,6 @@ public class EditorActivity extends AppCompatActivity
         } else {
             Toast.makeText(this, R.string.editor_delete_pet_successful, Toast.LENGTH_SHORT).show();
         }
+        finish();
     }
 }
